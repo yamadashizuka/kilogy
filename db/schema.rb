@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150225080451) do
 
   create_table "checkresults", force: true do |t|
@@ -30,9 +29,6 @@ ActiveRecord::Schema.define(version: 20150225080451) do
   end
 
   add_index "checks", ["weather_id"], name: "index_checks_on_weather_id"
-=======
-ActiveRecord::Schema.define(version: 20150225063111) do
->>>>>>> e8acaf5fa1eff1efe07b16cadc1979bd9f2b41d5
 
   create_table "divisions", force: true do |t|
     t.string   "code"
