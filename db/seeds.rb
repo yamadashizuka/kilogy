@@ -40,3 +40,16 @@ Result.delete_all
 Result.create(id: 1, name: '合格')
 Result.create(id: 2, name: '不合格')
 Result.create(id: 3, name: '状態不明')
+
+
+##########################
+### テスト用にデータを入れる（超暫定)
+
+
+# Worker(作業者)テーブルにテスト用初期値を投入（全件削除して再投入）
+Worker.delete_all
+Worker.create(id: 1, name: "山田 たろこ", division_id: 1)
+Worker.create(id: 2, name: "浪速 あきこ", division_id: 2)
+Worker.create(id: 3, name: "道頓堀 たろう", division_id: 3)
+Worker.create(id: 4, name: "名古屋 じょうたろう", division_id: 4)
+Worker.create(id: 5, name: "東京 はとこ", division_id: 5)
