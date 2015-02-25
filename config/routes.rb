@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+
   resources :checks
 
   resources :weathers
 
   resources :checkresults
+
+  resources :inspections
+
+  resources :results
+
+  resources :statuses
 
   resources :equipment
 

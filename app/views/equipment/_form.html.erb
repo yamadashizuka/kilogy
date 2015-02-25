@@ -23,6 +23,10 @@
     <%= f.label :place_id %><br>
     <%= f.collection_select( :place_id, Place.all, :id, :name ) %>
   </div>
+  <div class="field">
+    <%= f.label :division_id %><br>
+    <%= f.collection_select( :division_id, Division.all, :id, :name ) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

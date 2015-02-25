@@ -27,3 +27,43 @@ Place.delete_all
 Place.create(id: 1, name: '大阪ビル', address: '大阪市なんとか区どこそこ町１−２−３')
 Place.create(id: 2, name: '名古屋タワー', address: '名古屋市なんとか区どこそこ町７−５−８')
 Place.create(id: 3, name: '東京港ショッピングモール', address: '東京都なんとか区ベイサイドエリア１０９')
+
+# Status(状況)テーブルに初期値を投入(全件削除して再投入)
+Status.delete_all
+Status.create(id: 1, name: '担当未割当')
+Status.create(id: 2, name: '実施待ち')
+Status.create(id: 3, name: '実施中')
+Status.create(id: 4, name: '完了')
+
+# Result(結果)テーブルに初期値を投入(全件削除して再投入)
+Result.delete_all
+Result.create(id: 1, name: '合格')
+Result.create(id: 2, name: '不合格')
+Result.create(id: 3, name: '状態不明')
+
+# Weather(天気)テーブルに初期値を投入(全件削除して再投入)
+Weather.delete_all
+Weather.create(id: 1, name: '晴れ')
+Weather.create(id: 2, name: '曇り')
+Weather.create(id: 3, name: '雨')
+Weather.create(id: 4, name: '雪')
+
+# Checkresult(チェック結果)テーブルに初期値を投入(全件削除して再投入)
+Checkresult.delete_all
+Checkresult.create(id: 1, name: '優')
+Checkresult.create(id: 2, name: '良')
+Checkresult.create(id: 3, name: '可')
+Checkresult.create(id: 4, name: '不可')
+
+
+##########################
+### テスト用にデータを入れる（超暫定)
+
+
+# Worker(作業者)テーブルにテスト用初期値を投入（全件削除して再投入）
+Worker.delete_all
+Worker.create(id: 1, name: "山田 たろこ", division_id: 1)
+Worker.create(id: 2, name: "浪速 あきこ", division_id: 2)
+Worker.create(id: 3, name: "道頓堀 たろう", division_id: 3)
+Worker.create(id: 4, name: "名古屋 じょうたろう", division_id: 4)
+Worker.create(id: 5, name: "東京 はとこ", division_id: 5)
