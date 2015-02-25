@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 20150222062234) do
     t.string   "name"
     t.integer  "type_id"
     t.integer  "place_id"
+    t.integer  "division_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "equipment", ["division_id"], name: "index_equipment_on_division_id"
   add_index "equipment", ["place_id"], name: "index_equipment_on_place_id"
   add_index "equipment", ["type_id"], name: "index_equipment_on_type_id"
 
