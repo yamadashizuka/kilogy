@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Worker:</strong>
+  <%= @record.worker %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @record.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @record.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

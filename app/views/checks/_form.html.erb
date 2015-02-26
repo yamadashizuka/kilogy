@@ -13,19 +13,19 @@
 
   <div class="field">
     <%= f.label :weather_id %><br>
-    <%= f.text_field :weather_id %>
+    <%= f.collection_select( :weather_id, Weather.all, :id, :name )%>
   </div>
   <div class="field">
     <%= f.label :exterior %><br>
-    <%= f.number_field :exterior %>
+    <%= f.collection_select( :exterior, Checkresult.all, :id, :name ) %>
   </div>
   <div class="field">
     <%= f.label :tone %><br>
-    <%= f.number_field :tone %>
+    <%= f.collection_select( :tone, Checkresult.all, :id, :name ) %>
   </div>
   <div class="field">
     <%= f.label :stain %><br>
-    <%= f.number_field :stain %>
+    <%= f.collection_select( :stain, Checkresult.all, :id, :name ) %>
   </div>
   <div class="actions">
     <%= f.submit %>

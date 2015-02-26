@@ -18,9 +18,9 @@ Division.create(id: 5, code: 'TKY-01', name: '東京支社')
 
 # Type(種類)テーブルに初期値を投入(全件削除して再投入)
 Type.delete_all
-Type.create(id: 1, name: '大型')
-Type.create(id: 2, name: '中型')
-Type.create(id: 3, name: '小型')
+Type.create(id: 1, name: '通常用')
+Type.create(id: 2, name: '非常用')
+Type.create(id: 3, name: '携帯用')
 
 # Place(場所)テーブルに初期値を投入(全件削除して再投入)
 Place.delete_all
@@ -40,11 +40,12 @@ Result.delete_all
 Result.create(id: 1, name: '合格')
 Result.create(id: 2, name: '不合格')
 Result.create(id: 3, name: '状態不明')
+Result.create(id: 4, name: '検査前')
 
 # Weather(天気)テーブルに初期値を投入(全件削除して再投入)
 Weather.delete_all
-Weather.create(id: 1, name: '晴れ')
-Weather.create(id: 2, name: '曇り')
+Weather.create(id: 1, name: '晴')
+Weather.create(id: 2, name: '曇')
 Weather.create(id: 3, name: '雨')
 Weather.create(id: 4, name: '雪')
 
@@ -58,7 +59,7 @@ Checkresult.create(id: 4, name: '不可')
 
 ##########################
 ### テスト用にデータを入れる（超暫定)
-
+##########################
 
 # Worker(作業者)テーブルにテスト用初期値を投入（全件削除して再投入）
 Worker.delete_all
@@ -67,3 +68,15 @@ Worker.create(id: 2, name: "浪速 あきこ", division_id: 2)
 Worker.create(id: 3, name: "道頓堀 たろう", division_id: 3)
 Worker.create(id: 4, name: "名古屋 じょうたろう", division_id: 4)
 Worker.create(id: 5, name: "東京 はとこ", division_id: 5)
+
+# Equipment(設備)テーブルにテスト用初期値を投入（全件削除して再投入）
+Equipment.delete_all
+Equipment.create(id: 1, name: "屋外特設会場用", type_id: 1, place_id: 1, division_id: 2)
+Equipment.create(id: 2, name: "災害対策用", type_id: 2, place_id: 2, division_id: 4)
+Equipment.create(id: 3, name: "イベント貸出用", type_id: 3, place_id: 3, division_id: 5)
+
+# Inspection(点検)テーブルにテスト用初期値を投入（全件削除して再投入）
+Inspection.delete_all
+Inspection.create(id: 1, targetyearmonth: "201503", equipment_id: 1, status_id: 2, worker_id: 2, result_id: 4, processingdate: "2015-03-01")
+Inspection.create(id: 2, targetyearmonth: "201503", equipment_id: 2, status_id: 2, worker_id: 4, result_id: 4, processingdate: "2015-03-01")
+Inspection.create(id: 3, targetyearmonth: "201503", equipment_id: 3, status_id: 2, worker_id: 5, result_id: 4, processingdate: "2015-03-01")

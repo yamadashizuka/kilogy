@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :records
+
+  resources :notes
+
+  resources :measurements
+
   resources :checks
 
   resources :weathers

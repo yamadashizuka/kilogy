@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225080451) do
+ActiveRecord::Schema.define(version: 20150226080839) do
 
   create_table "checkresults", force: true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150225080451) do
     t.integer  "stain"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "record_id"
   end
 
   add_index "checks", ["weather_id"], name: "index_checks_on_weather_id"
@@ -66,12 +67,41 @@ ActiveRecord::Schema.define(version: 20150225080451) do
   add_index "inspections", ["status_id"], name: "index_inspections_on_status_id"
   add_index "inspections", ["worker_id"], name: "index_inspections_on_worker_id"
 
+  create_table "measurements", force: true do |t|
+    t.integer  "metercount"
+    t.decimal  "testervalue", precision: 5, scale: 2
+    t.integer  "point"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "record_id"
+  end
+
+  create_table "notes", force: true do |t|
+    t.text     "memo"
+    t.string   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "record_id"
+  end
+
   create_table "places", force: true do |t|
     t.string   "name"
     t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "records", force: true do |t|
+    t.integer  "inspection_id"
+    t.integer  "worker_id"
+    t.decimal  "latitude",      precision: 11, scale: 8
+    t.decimal  "longitude",     precision: 11, scale: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "records", ["inspection_id"], name: "index_records_on_inspection_id"
+  add_index "records", ["worker_id"], name: "index_records_on_worker_id"
 
   create_table "results", force: true do |t|
     t.string   "name"
