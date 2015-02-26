@@ -1,8 +1,22 @@
 ja:
   views:
+    link_to:
+      new: 新規登録
+      edit: 更新
+      show: 詳細
+      destroy: 削除
     inspection:
       index: 点検一覧
       new: 点検の登録
       edit: 点検の更新
       show: 点検の確認
-    
+    equipment:
+      index: 設備一覧
+      new: 設備の登録
+      edit: 設備の更新
+      show: 設備の確認
+    record:
+      index: 記録一覧
+      new: 記録の登録
+      edit: 記録の更新
+      show: 記録の確認

@@ -27,3 +27,12 @@ ja:
         record_id: 記録番号
         memo: 所感
         picture: 写真
+      worker:
+        name: 名前
+        division_id: 所属
+      equipment:
+        name: 名称
+        type_id: 種類
+        place_id: 設置場所
+        division_id: 管轄
+        last_update: 最終更新日時

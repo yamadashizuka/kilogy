@@ -22,9 +22,9 @@
         <td><%= inspection.worker.name %></td>
         <td><%= inspection.result.name %></td>
         <td><%= inspection.processingdate %></td>
-        <td><%= link_to 'Show', inspection %></td>
-        <td><%= link_to 'Edit', edit_inspection_path(inspection) %></td>
-        <td><%= link_to 'Destroy', inspection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('views.link_to.show'), inspection %></td>
+        <td><%= link_to t('views.link_to.edit'), edit_inspection_path(inspection) %></td>
+        <td><%= link_to t('views.link_to.destroy'), inspection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Inspection', new_inspection_path %>
+<%= link_to t('views.link_to.new'), new_inspection_path %>

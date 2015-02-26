@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :worker_id %><br>
-    <%= f.text_field :worker_id %>
+    <%= f.collection_select( :worker_id, Worker.all, :id, :name ) %>
   </div>
   <div class="field">
     <%= f.label :latitude %><br>
