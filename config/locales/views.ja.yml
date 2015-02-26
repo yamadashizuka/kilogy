@@ -1,0 +1,8 @@
+ja:
+  views:
+    inspection:
+      index: 点検一覧
+      new: 点検の登録
+      edit: 点検の更新
+      show: 点検の確認
+    

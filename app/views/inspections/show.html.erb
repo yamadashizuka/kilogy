@@ -1,32 +1,34 @@
+<h1><%= t('views.inspection.show') %></h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Targetyearmonth:</strong>
+  <strong><%= t('activerecord.attributes.inspection.targetyearmonth') %>:</strong>
   <%= @inspection.targetyearmonth %>
 </p>
 
 <p>
-  <strong>Equipment:</strong>
+  <strong><%= t('activerecord.attributes.inspection.equipment_id') %>:</strong>
   <%= @inspection.equipment.name %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong><%= t('activerecord.attributes.inspection.status_id') %>:</strong>
   <%= @inspection.status.name %>
 </p>
 <p>
-  <strong>Worker:</strong>
+  <strong><%= t('activerecord.attributes.inspection.worker_id') %>:</strong>
   <%= @inspection.worker.name %>
 </p>
 
 
 <p>
-  <strong>Result:</strong>
+  <strong><%= t('activerecord.attributes.inspection.result_id') %>:</strong>
   <%= @inspection.result.name %>
 </p>
 
 <p>
-  <strong>Processingdate:</strong>
+  <strong><%= t('activerecord.attributes.inspection.processingdate') %>:</strong>
   <%= @inspection.processingdate %>
 </p>
 
