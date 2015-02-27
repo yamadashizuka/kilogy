@@ -10,6 +10,12 @@ class RecordsController < ApplicationController
   # GET /records/1
   # GET /records/1.json
   def show
+    @marker = Gmaps4rails.build_markers(@record) do |record, marker|
+      marker.lat record.latitude
+      marker.lng record.longitude
+      marker.infowindow record.updated_at.to_s
+      marker.json({title: record.worker_id.to_s})
+    end
   end
 
   # GET /records/new
