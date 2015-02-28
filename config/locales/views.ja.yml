@@ -15,7 +15,7 @@ ja:
       new: 設備の登録
       edit: 設備の更新
       show: 設備の確認
-    record:
+    kiroku:
       index: 記録一覧
       new: 記録の登録
       edit: 記録の更新

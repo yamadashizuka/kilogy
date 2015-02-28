@@ -42,3 +42,6 @@ gem 'spring',        group: :development
 # for GPS
 gem "gmaps4rails"
 gem "geocoder"
+
+# for carrierwave
+gem 'carrierwave'

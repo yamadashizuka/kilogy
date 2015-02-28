@@ -30,7 +30,7 @@ class KirokusController < ApplicationController
   # POST /kirokus
   # POST /kirokus.json
   def create
-    @kirku = Kiroku.new(kiroku_params)
+    @kiroku = Kiroku.new(kiroku_params)
 
     respond_to do |format|
       if @kiroku.save
