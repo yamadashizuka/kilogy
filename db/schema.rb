@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226080839) do
+ActiveRecord::Schema.define(version: 20150227104601) do
 
   create_table "checkresults", force: true do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150226080839) do
     t.integer  "stain"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "record_id"
+    t.integer  "kiroku_id"
   end
 
   add_index "checks", ["weather_id"], name: "index_checks_on_weather_id"
@@ -67,31 +67,7 @@ ActiveRecord::Schema.define(version: 20150226080839) do
   add_index "inspections", ["status_id"], name: "index_inspections_on_status_id"
   add_index "inspections", ["worker_id"], name: "index_inspections_on_worker_id"
 
-  create_table "measurements", force: true do |t|
-    t.integer  "metercount"
-    t.decimal  "testervalue", precision: 5, scale: 2
-    t.integer  "point"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "record_id"
-  end
-
-  create_table "notes", force: true do |t|
-    t.text     "memo"
-    t.string   "picture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "record_id"
-  end
-
-  create_table "places", force: true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "records", force: true do |t|
+  create_table "kirokus", force: true do |t|
     t.integer  "inspection_id"
     t.integer  "worker_id"
     t.decimal  "latitude",      precision: 11, scale: 8
@@ -100,8 +76,34 @@ ActiveRecord::Schema.define(version: 20150226080839) do
     t.datetime "updated_at"
   end
 
-  add_index "records", ["inspection_id"], name: "index_records_on_inspection_id"
-  add_index "records", ["worker_id"], name: "index_records_on_worker_id"
+  add_index "kirokus", ["inspection_id"], name: "index_kirokus_on_inspection_id"
+  add_index "kirokus", ["worker_id"], name: "index_kirokus_on_worker_id"
+
+  create_table "measurements", force: true do |t|
+    t.integer  "metercount"
+    t.decimal  "testervalue", precision: 5, scale: 2
+    t.integer  "point"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "kiroku_id"
+  end
+
+  create_table "notes", force: true do |t|
+    t.integer  "kiroku_id"
+    t.text     "memo"
+    t.string   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["kiroku_id"], name: "index_notes_on_kiroku_id"
+
+  create_table "places", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "results", force: true do |t|
     t.string   "name"

@@ -1,10 +1,10 @@
-<%= form_for(@record) do |f| %>
-  <% if @record.errors.any? %>
+<%= form_for(@kiroku) do |f| %>
+  <% if @kiroku.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+      <h2><%= pluralize(@kiroku.errors.count, "error") %> prohibited this kiroku from being saved:</h2>
 
       <ul>
-      <% @record.errors.full_messages.each do |message| %>
+      <% @kiroku.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -22,8 +22,8 @@
         var lat = pos.coords.latitude;
         var lng = pos.coords.longitude;
 
-        document.getElementById("record_latitude").value = lat;
-        document.getElementById("record_longitude").value = lng;
+        document.getElementById("kiroku_latitude").value = lat;
+        document.getElementById("kiroku_longitude").value = lng;
         
         },
 

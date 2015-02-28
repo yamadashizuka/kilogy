@@ -1,4 +1,4 @@
-class Record < ActiveRecord::Base
+class Kiroku < ActiveRecord::Base
   belongs_to :worker
   belongs_to :inspection
   has_one :check

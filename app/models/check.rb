@@ -1,4 +1,4 @@
 class Check < ActiveRecord::Base
   belongs_to :weather
-  belongs_to :record 
+  belongs_to :kiroku 
 end

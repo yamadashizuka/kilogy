@@ -1,21 +1,21 @@
-<h1><%= t('views.record.show') %></h1>
+<h1><%= t('views.kiroku.show') %></h1>
 
 
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Worker:</strong>
-  <%= @record.worker.name %>
+  <%= @kiroku.worker.name %>
 </p>
 
 <p>
   <strong>Latitude:</strong>
-  <%= @record.latitude %>
+  <%= @kiroku.latitude %>
 </p>
 
 <p>
   <strong>Longitude:</strong>
-  <%= @record.longitude %>
+  <%= @kiroku.longitude %>
 </p>
 
 <P>
@@ -32,5 +32,5 @@
     });
 </script>
 
-<%= link_to 'Edit', edit_record_path(@record) %> |
-<%= link_to 'Back', records_path %>
+<%= link_to 'Edit', edit_kiroku_path(@kiroku) %> |
+<%= link_to 'Back', kirokus_path %>
