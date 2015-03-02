@@ -4,4 +4,6 @@ class Kiroku < ActiveRecord::Base
   has_one :check
   has_one :measurement
   has_one :note
+
+  accepts_nested_attributes_for :measurement, :check, :note
 end

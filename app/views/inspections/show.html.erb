@@ -32,5 +32,27 @@
   <%= @inspection.processingdate %>
 </p>
 
+<%= form_for(@kiroku) do |f| %>
+  <% if @kiroku.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kiroku.errors.count, "error") %> prohibited this kiroku from being saved:</h2>
+
+      <ul>
+      <% @kiroku.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render 'kirokus/form_inspection_show', f: f %>
+
+  <div class="actions">
+    <%= f.submit "点検記録登録" %>
+  </div>
+
+<% end %>
+
+<hr>
 <%= link_to 'Edit', edit_inspection_path(@inspection) %> |
 <%= link_to 'Back', inspections_path %>

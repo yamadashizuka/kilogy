@@ -75,6 +75,10 @@ class KirokusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kiroku_params
-      params.require(:kiroku).permit(:worker_id, :latitude, :longitude)
+      params.require(:kiroku).permit(
+        :worker_id, :latitude, :longitude,
+        measurement_attributes: [:id, :kiroku_id, :metercount, :testervalue, :point],
+        check_attributes: [:id, :kiroku_id, :weather_id, :exterior, :tone, :stain],
+        note_attributes: [:id, :kiroku_id, :memo, :picture] )
     end
 end
