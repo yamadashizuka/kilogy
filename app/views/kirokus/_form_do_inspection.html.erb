@@ -57,13 +57,13 @@
 </div>
 
 <%= f.fields_for :check do |check| %>
-  <%= render 'checks/form_kiroku_show', f: check %>
+<%= render 'checks/form_do_inspection', f: check %>
 <% end %>
 
 <%= f.fields_for :measurement do |measurement| %>
-  <%= render 'measurements/form_kiroku_show', f: measurement %>
+  <%= render 'measurements/form_do_inspection', f: measurement %>
 <% end %>
 
 <%= f.fields_for :note do |note| %>
-<%= render 'notes/form_kiroku_show', f: note %>
+<%= render 'notes/form_do_inspection', f: note %>
 <% end %>

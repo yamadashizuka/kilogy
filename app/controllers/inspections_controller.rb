@@ -1,5 +1,5 @@
 class InspectionsController < ApplicationController
-  before_action :set_inspection, only: [:show, :edit, :update, :destroy]
+  before_action :set_inspection, only: [:show, :edit, :update, :destroy, :do_inspection]
 
   # GET /inspections
   # GET /inspections.json
@@ -10,6 +10,10 @@ class InspectionsController < ApplicationController
   # GET /inspections/1
   # GET /inspections/1.json
   def show
+  end
+  
+  # GET /inspections/1/do_inspection
+  def do_inspection
     @kirokus = @inspection.kiroku.all
     @kiroku = @inspection.kiroku.build
     @check =  @kiroku.build_check

@@ -1,57 +1,6 @@
 <h1><%= t('views.inspection.show') %></h1>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong><%= t('activerecord.attributes.inspection.targetyearmonth') %>:</strong>
-  <%= @inspection.targetyearmonth %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.inspection.equipment_id') %>:</strong>
-  <%= @inspection.equipment.name %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.inspection.status_id') %>:</strong>
-  <%= @inspection.status.name %>
-</p>
-<p>
-  <strong><%= t('activerecord.attributes.inspection.worker_id') %>:</strong>
-  <%= @inspection.worker.name %>
-</p>
-
-
-<p>
-  <strong><%= t('activerecord.attributes.inspection.result_id') %>:</strong>
-  <%= @inspection.result.name %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.inspection.processingdate') %>:</strong>
-  <%= @inspection.processingdate %>
-</p>
-
-<%= form_for(@kiroku) do |f| %>
-  <% if @kiroku.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@kiroku.errors.count, "error") %> prohibited this kiroku from being saved:</h2>
-
-      <ul>
-      <% @kiroku.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= render 'kirokus/form_inspection_show', f: f %>
-
-  <div class="actions">
-    <%= f.submit "点検記録登録" %>
-  </div>
-
-<% end %>
+<%= render 'show', inspection: @inspection %>
 
 <hr>
 <%= link_to 'Edit', edit_inspection_path(@inspection) %> |

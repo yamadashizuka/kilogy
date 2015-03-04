@@ -16,6 +16,7 @@ ja:
       new: 点検の登録
       edit: 点検の更新
       show: 点検の確認
+      do_inspecrion: 点検開始
     equipment:
       index: 設備一覧
       new: 設備の登録

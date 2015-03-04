@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :checkresults
 
   resources :inspections
+  get 'inspections/:id/do_inspection' => 'inspections#do_inspection' , as: 'do_inspection'
 
   resources :results
 
