@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'menu/show'
+
+  root to: 'menu#show'
+
   resources :kirokus
 
   resources :notes
