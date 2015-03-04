@@ -1,6 +1,9 @@
 <h1><%= t('views.inspection.show') %></h1>
+<p id="notice"><%= notice %></p>
 
 <%= render 'show', inspection: @inspection %>
+
+<%= render 'kirokus/index', kirokus: @kirokus %>
 
 <hr>
 <%= link_to 'Edit', edit_inspection_path(@inspection) %> |
