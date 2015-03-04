@@ -20,3 +20,9 @@ ja:
       new: 記録の登録
       edit: 記録の更新
       show: 記録の確認
+    check:
+      show: チェック結果の確認
+    measurement:
+      show: 計測結果の確認
+    note:
+      show: その他記録の確認
