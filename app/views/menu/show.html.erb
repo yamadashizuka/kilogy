@@ -1,0 +1,30 @@
+<h1><%= t('views.menu.show.title') %></h1>
+
+
+<h2><%= t('views.menu.show.daily_work') %></h2>
+
+<p>
+  <%= link_to t('views.inspection.index'), inspections_path %>
+</p>
+
+
+<hr>
+<h2><%= t('views.menu.show.maintanance_master') %></h2>
+
+<p>
+  <%= link_to t('views.equipment.index'), equipment_index_path %>
+</p>
+<p>
+  <%= link_to t('views.place.index'), places_path %>
+</p>
+
+
+<hr>
+<h2><%= t('views.menu.show.maintanance_sys') %></h2>
+
+<p>
+  <%= link_to t('views.worker.index'), workers_path %>
+</p>
+<p>
+  <%= link_to t('views.division.index'), divisions_path %>
+</p>

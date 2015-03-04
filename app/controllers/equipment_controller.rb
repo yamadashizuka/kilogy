@@ -69,6 +69,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :type_id, :place_id)
+      params.require(:equipment).permit(:name, :type_id, :place_id, :division_id)
     end
 end

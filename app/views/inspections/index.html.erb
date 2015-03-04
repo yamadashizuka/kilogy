@@ -1,0 +1,36 @@
+<h1><%= t('views.inspection.index') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t('activerecord.attributes.inspection.targetyearmonth') %></th>
+      <th><%= t('activerecord.attributes.inspection.equipment_id') %></th>
+      <th><%= t('activerecord.attributes.inspection.status_id') %></th>
+      <th><%= t('activerecord.attributes.inspection.worker_id') %></th>
+      <th><%= t('activerecord.attributes.inspection.result_id') %></th>
+      <th><%= t('activerecord.attributes.inspection.processingdate') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inspections.each do |inspection| %>
+      <tr>
+        <td><%= inspection.targetyearmonth %></td>
+        <td><%= inspection.equipment.name %></td>
+        <td><%= inspection.status.name %></td>
+        <td><%= inspection.worker.name %></td>
+        <td><%= inspection.result.name %></td>
+        <td><%= inspection.processingdate %></td>
+        <td><%= link_to t('views.inspection.do_inspecrion'), do_inspection_path(inspection) %></td>
+        <td><%= link_to t('views.link_to.show'), inspection %></td>
+        <td><%= link_to t('views.link_to.edit'), edit_inspection_path(inspection) %></td>
+        <td><%= link_to t('views.link_to.destroy'), inspection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('views.link_to.new'), new_inspection_path %>

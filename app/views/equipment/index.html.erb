@@ -1,12 +1,14 @@
-<h1>Listing equipment</h1>
+<h1><%= t('views.equipment.index') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Place</th>
-      <th colspan="3"></th>
+      <th><%= t('activerecord.attributes.equipment.name') %></th>
+      <th><%= t('activerecord.attributes.equipment.type_id') %></th>
+      <th><%= t('activerecord.attributes.equipment.place_id') %></th>
+      <th><%= t('activerecord.attributes.equipment.division_id') %></th>
+      <th><%= t('activerecord.attributes.equipment.last_update') %></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -16,9 +18,11 @@
         <td><%= equipment.name %></td>
         <td><%= equipment.type.name %></td>
         <td><%= equipment.place.name %></td>
-        <td><%= link_to 'Show', equipment %></td>
-        <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
-        <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= equipment.division.name %></td>
+        <td><%= equipment.updated_at %></td>
+        <td><%= link_to t('views.link_to.show'), equipment %></td>
+        <td><%= link_to t('views.link_to.edit'), edit_equipment_path(equipment) %></td>
+        <td><%= link_to t('views.link_to.destroy'), equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Equipment', new_equipment_path %>
+<%= link_to link_to t('views.link_to.new'), new_equipment_path %>

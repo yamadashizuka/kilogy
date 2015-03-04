@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+
+  get 'menu/show'
+
+  root to: 'menu#show'
+
+  resources :kirokus
+
+  resources :notes
+
+  resources :measurements
+
+  resources :checks
+
+  resources :weathers
+
+  resources :checkresults
+
+  resources :inspections
+  get 'inspections/:id/do_inspection' => 'inspections#do_inspection' , as: 'do_inspection'
+
+  resources :results
+
+  resources :statuses
+
   resources :equipment
 
   resources :places

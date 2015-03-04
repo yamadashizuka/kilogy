@@ -1,0 +1,44 @@
+<h1><%= t('views.kiroku.show') %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<%= render 'checks/kiroku_show', check: @kiroku.check %>
+
+<%= render 'measurements/kiroku_show', measurement: @kiroku.measurement %>
+
+<%= render 'notes/kiroku_show', note: @kiroku.note %>
+
+<p>
+  <strong><%= t('activerecord.attributes.kiroku.worker_id') %>:</strong>
+  <%= @kiroku.worker.name %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.kiroku.latitude') %>:</strong>
+  <%= @kiroku.latitude %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.kiroku.longitude') %>:</strong>
+  <%= @kiroku.longitude %>
+</p>
+
+<P>
+<div id="map" style='width: 100%;height:400px;'></div>
+</P>
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {draggable: false,panControl: false,streetViewControl: false}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @marker.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+	  handler.getMap().setZoom(18);
+    });
+</script>
+
+<%= link_to t('views.inspection.index'), inspections_path %>
+
+<hr>
+<%= link_to 'Edit', edit_kiroku_path(@kiroku) %> |
+<%= link_to 'Back', kirokus_path %>
