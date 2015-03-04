@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227104601) do
+ActiveRecord::Schema.define(version: 20150304010517) do
 
   create_table "checkresults", force: true do |t|
     t.string   "name"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 20150227104601) do
 
   create_table "checks", force: true do |t|
     t.integer  "weather_id"
-    t.integer  "exterior"
-    t.integer  "tone"
-    t.integer  "stain"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "kiroku_id"
+    t.integer  "exterior_id"
+    t.integer  "tone_id"
+    t.integer  "stain_id"
   end
 
   add_index "checks", ["weather_id"], name: "index_checks_on_weather_id"

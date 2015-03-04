@@ -14,10 +14,10 @@
   <tbody>
     <% @checks.each do |check| %>
       <tr>
-        <td><%= check.weather %></td>
-        <td><%= check.exterior %></td>
-        <td><%= check.tone %></td>
-        <td><%= check.stain %></td>
+        <td><%= check.weather.name %></td>
+        <td><%= check.exterior.name %></td>
+        <td><%= check.tone.name %></td>
+        <td><%= check.stain.name %></td>
         <td><%= link_to 'Show', check %></td>
         <td><%= link_to 'Edit', edit_check_path(check) %></td>
         <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>

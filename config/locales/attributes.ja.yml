@@ -15,9 +15,9 @@ ja:
       check:
         kiroku_id: 記録番号
         weather_id: 天候
-        exterior: 外観
-        tone: 色
-        stain: 汚れ
+        exterior_id: 外観
+        tone_id: 色
+        stain_id: 汚れ
       measurement:
         kiroku_id: 記録番号
         metercount: メーター値

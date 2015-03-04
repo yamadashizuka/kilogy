@@ -2,22 +2,22 @@
 
 <p>
   <strong>Weather:</strong>
-  <%= @check.weather %>
+  <%= @check.weather.name %>
 </p>
 
 <p>
   <strong>Exterior:</strong>
-  <%= @check.exterior %>
+  <%= @check.exterior.name %>
 </p>
 
 <p>
   <strong>Tone:</strong>
-  <%= @check.tone %>
+  <%= @check.tone.name %>
 </p>
 
 <p>
   <strong>Stain:</strong>
-  <%= @check.stain %>
+  <%= @check.stain.name %>
 </p>
 
 <%= link_to 'Edit', edit_check_path(@check) %> |

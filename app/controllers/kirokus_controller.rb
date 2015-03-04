@@ -78,7 +78,7 @@ class KirokusController < ApplicationController
       params.require(:kiroku).permit(
         :worker_id, :latitude, :longitude,
         measurement_attributes: [:id, :kiroku_id, :metercount, :testervalue, :point],
-        check_attributes: [:id, :kiroku_id, :weather_id, :exterior, :tone, :stain],
+        check_attributes: [:id, :kiroku_id, :weather_id, :exterior_id, :tone_id, :stain_id],
         note_attributes: [:id, :kiroku_id, :memo, :picture] )
     end
 end
