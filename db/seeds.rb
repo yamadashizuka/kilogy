@@ -15,18 +15,33 @@ Division.create(id: 2, code: 'OSK-01', name: '大阪第１')
 Division.create(id: 3, code: 'OSK-02', name: '大阪第２')
 Division.create(id: 4, code: 'NGY-01', name: '名古屋営業所')
 Division.create(id: 5, code: 'TKY-01', name: '東京支社')
+if Rails.env.development?
+  Division.connection.execute("update sqlite_sequence set seq=5 where name='divisions'")
+else
+  Division.connection.execute("SELECT SETVAL('divisions_id_seq', 5, FALSE)")
+end
 
 # Type(種類)テーブルに初期値を投入(全件削除して再投入)
 Type.delete_all
 Type.create(id: 1, name: '通常用')
 Type.create(id: 2, name: '非常用')
 Type.create(id: 3, name: '携帯用')
+if Rails.env.development?
+  Type.connection.execute("update sqlite_sequence set seq=3 where name='types'")
+else
+  Type.connection.execute("SELECT SETVAL('types_id_seq', 3, FALSE)")
+end
 
 # Place(場所)テーブルに初期値を投入(全件削除して再投入)
 Place.delete_all
 Place.create(id: 1, name: '大阪ビル', address: '大阪市なんとか区どこそこ町１−２−３')
 Place.create(id: 2, name: '名古屋タワー', address: '名古屋市なんとか区どこそこ町７−５−８')
 Place.create(id: 3, name: '東京港ショッピングモール', address: '東京都なんとか区ベイサイドエリア１０９')
+if Rails.env.development?
+  Place.connection.execute("update sqlite_sequence set seq=3 where name='places'")
+else
+  Place.connection.execute("SELECT SETVAL('placess_id_seq', 3, FALSE)")
+end
 
 # Status(状況)テーブルに初期値を投入(全件削除して再投入)
 Status.delete_all
@@ -34,6 +49,11 @@ Status.create(id: 1, name: '担当未割当')
 Status.create(id: 2, name: '実施待ち')
 Status.create(id: 3, name: '実施中')
 Status.create(id: 4, name: '完了')
+if Rails.env.development?
+  Status.connection.execute("update sqlite_sequence set seq=4 where name='statuses'")
+else
+  Status.connection.execute("SELECT SETVAL('statuses_id_seq', 4, FALSE)")
+end
 
 # Result(結果)テーブルに初期値を投入(全件削除して再投入)
 Result.delete_all
@@ -41,6 +61,11 @@ Result.create(id: 1, name: '合格')
 Result.create(id: 2, name: '不合格')
 Result.create(id: 3, name: '状態不明')
 Result.create(id: 4, name: '検査前')
+if Rails.env.development?
+  Result.connection.execute("update sqlite_sequence set seq=4 where name='results'")
+else
+  Result.connection.execute("SELECT SETVAL('results_id_seq', 4, FALSE)")
+end
 
 # Weather(天気)テーブルに初期値を投入(全件削除して再投入)
 Weather.delete_all
@@ -48,6 +73,11 @@ Weather.create(id: 1, name: '晴')
 Weather.create(id: 2, name: '曇')
 Weather.create(id: 3, name: '雨')
 Weather.create(id: 4, name: '雪')
+if Rails.env.development?
+  Weather.connection.execute("update sqlite_sequence set seq=4 where name='weathers'")
+else
+  Weather.connection.execute("SELECT SETVAL('weathers_id_seq', 4, FALSE)")
+end
 
 # Checkresult(チェック結果)テーブルに初期値を投入(全件削除して再投入)
 Checkresult.delete_all
@@ -55,7 +85,11 @@ Checkresult.create(id: 1, name: '優')
 Checkresult.create(id: 2, name: '良')
 Checkresult.create(id: 3, name: '可')
 Checkresult.create(id: 4, name: '不可')
-
+if Rails.env.development?
+  Checkresult.connection.execute("update sqlite_sequence set seq=4 where name='checkresults'")
+else
+  Checkresult.connection.execute("SELECT SETVAL('checkresults_id_seq', 4, FALSE)")
+end
 
 ##########################
 ### テスト用にデータを入れる（超暫定)
