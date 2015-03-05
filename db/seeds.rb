@@ -64,24 +64,34 @@ Checkresult.create(id: 4, name: '不可')
 # Worker(作業者)テーブルにテスト用初期値を投入（全件削除して再投入）
 Worker.delete_all
 if Rails.env.development?
-Worker.connection.execute("delete from sqlite_sequence where name='Worker'")
+  Worker.connection.execute("delete from sqlite_sequence where name='workers'")
 else
-Worker.connection.execute("SELECT SETVAL('workers_id_seq',1,FALSE)")
+  Worker.connection.execute("SELECT SETVAL('workers_id_seq',1,FALSE)")
 end
-Worker.create(id: 1, name: "山田 たろこ", division_id: 1)
-Worker.create(id: 2, name: "浪速 あきこ", division_id: 2)
-Worker.create(id: 3, name: "道頓堀 たろう", division_id: 3)
-Worker.create(id: 4, name: "名古屋 じょうたろう", division_id: 4)
-Worker.create(id: 5, name: "東京 はとこ", division_id: 5)
+Worker.create(name: "山田 たろこ", division_id: 1)
+Worker.create(name: "浪速 あきこ", division_id: 2)
+Worker.create(name: "道頓堀 たろう", division_id: 3)
+Worker.create(name: "名古屋 じょうたろう", division_id: 4)
+Worker.create(name: "東京 はとこ", division_id: 5)
 
 # Equipment(設備)テーブルにテスト用初期値を投入（全件削除して再投入）
 Equipment.delete_all
-Equipment.create(id: 1, name: "屋外特設会場用", type_id: 1, place_id: 1, division_id: 2)
-Equipment.create(id: 2, name: "災害対策用", type_id: 2, place_id: 2, division_id: 4)
-Equipment.create(id: 3, name: "イベント貸出用", type_id: 3, place_id: 3, division_id: 5)
+if Rails.env.development?
+  Equipment.connection.execute("delete from sqlite_sequence where name='equipment'")
+else
+  Equipment.connection.execute("SELECT SETVAL('equipment_id_seq',1,FALSE)")
+end
+Equipment.create(name: "屋外特設会場用", type_id: 1, place_id: 1, division_id: 2)
+Equipment.create(name: "災害対策用", type_id: 2, place_id: 2, division_id: 4)
+Equipment.create(name: "イベント貸出用", type_id: 3, place_id: 3, division_id: 5)
 
 # Inspection(点検)テーブルにテスト用初期値を投入（全件削除して再投入）
 Inspection.delete_all
-Inspection.create(id: 1, targetyearmonth: "201503", equipment_id: 1, status_id: 2, worker_id: 2, result_id: 4, processingdate: "2015-03-01")
-Inspection.create(id: 2, targetyearmonth: "201503", equipment_id: 2, status_id: 2, worker_id: 4, result_id: 4, processingdate: "2015-03-01")
-Inspection.create(id: 3, targetyearmonth: "201503", equipment_id: 3, status_id: 2, worker_id: 5, result_id: 4, processingdate: "2015-03-01")
+if Rails.env.development?
+  Inspection.connection.execute("delete from sqlite_sequence where name='inspections'")
+else
+  Inspection.connection.execute("SELECT SETVAL('inspections_id_seq',1,FALSE)")
+end
+Inspection.create(targetyearmonth: "201503", equipment_id: 1, status_id: 2, worker_id: 2, result_id: 4, processingdate: "2015-03-01")
+Inspection.create(targetyearmonth: "201503", equipment_id: 2, status_id: 2, worker_id: 4, result_id: 4, processingdate: "2015-03-01")
+Inspection.create(targetyearmonth: "201503", equipment_id: 3, status_id: 2, worker_id: 5, result_id: 4, processingdate: "2015-03-01")
