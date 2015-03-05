@@ -5,7 +5,7 @@ ja:
         title: メニュー
         daily_work: 日常業務
         maintanance_master: マスター登録
-        maintanance_sys: メンテナンス(システム管理者用)
+        maintanance_sys: システム管理者用
     link_to:
       new: 新規登録
       edit: 更新
