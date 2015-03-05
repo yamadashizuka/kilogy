@@ -66,7 +66,7 @@ Worker.delete_all
 if Rails.env.development?
 Worker.connection.execute("delete from sqlite_sequence where name='Worker'")
 else
-Worker.connection.execute("SELECT SETVAL('Worker_id_seq',1,FALSE)")
+Worker.connection.execute("SELECT SETVAL('worker_id_seq',1,FALSE)")
 end
 Worker.create(id: 1, name: "山田 たろこ", division_id: 1)
 Worker.create(id: 2, name: "浪速 あきこ", division_id: 2)
