@@ -4,4 +4,7 @@ class Inspection < ActiveRecord::Base
   belongs_to :worker
   belongs_to :result
   has_many :kiroku
+
+  include Common
+  after_commit :dump 
 end
