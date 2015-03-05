@@ -40,7 +40,7 @@ Place.create(id: 3, name: '東京港ショッピングモール', address: '東�
 if Rails.env.development?
   Place.connection.execute("update sqlite_sequence set seq=3 where name='places'")
 else
-  Place.connection.execute("SELECT SETVAL('placess_id_seq', 3, FALSE)")
+  Place.connection.execute("SELECT SETVAL('places_id_seq', 3, FALSE)")
 end
 
 # Status(状況)テーブルに初期値を投入(全件削除して再投入)
