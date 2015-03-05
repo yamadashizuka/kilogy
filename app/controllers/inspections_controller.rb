@@ -10,6 +10,7 @@ class InspectionsController < ApplicationController
   # GET /inspections/1
   # GET /inspections/1.json
   def show
+    @kirokus = @inspection.kiroku.all
   end
   
   # GET /inspections/1/do_inspection

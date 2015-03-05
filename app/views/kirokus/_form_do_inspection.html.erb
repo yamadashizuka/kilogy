@@ -43,6 +43,8 @@
   }
 </script>
 
+<%= f.hidden_field :inspection_id %>
+
 <div class="field">
   <%= f.label :worker_id %><br>
   <%= f.collection_select( :worker_id, Worker.all, :id, :name ) %>
