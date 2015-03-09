@@ -1,9 +1,9 @@
 require 'csv'
 
 csv_data = CSV.generate( "", {:row_sep => "\r\n", :force_quotes => true} ) do |csv|
-  csv << Worker.column_names
+  csv << @workers.column_names
   @workers.each do |model|
-    csv << model.attributes.values_at(*Worker.column_names)
+    csv << model.attributes.values_at(*@workers.column_names)
   end
 end
 

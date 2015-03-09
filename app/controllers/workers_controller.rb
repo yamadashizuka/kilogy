@@ -71,6 +71,14 @@ class WorkersController < ApplicationController
     end
   end
 
+
+
+  def import
+    Worker.import(params[:file])
+    redirect_to workers_url, notice: "Workers imported."
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_worker

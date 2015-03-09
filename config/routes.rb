@@ -29,7 +29,9 @@ Rails.application.routes.draw do
 
   resources :types
 
-  resources :workers
+  resources :workers do
+    collection { post :import }  # for CSV Upload 
+  end
 
   resources :divisions
 

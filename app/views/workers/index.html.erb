@@ -29,4 +29,13 @@
 
 <br><hr><br>
 
-<%= link_to t('views.link_to.csv_download'), workers_path(format: :csv) %>
+<p>
+  <%= link_to t('views.link_to.csv_download'), workers_path(format: :csv) %>
+</p>
+
+<p>
+  <%= form_tag import_workers_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag t('views.link_to.csv_upload') %>
+  <% end %>
+</p>
