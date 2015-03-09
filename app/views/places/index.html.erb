@@ -26,3 +26,16 @@
 <br>
 
 <%= link_to 'New Place', new_place_path %>
+
+<br><hr><br>
+
+<p>
+  <%= link_to t('views.link_to.csv_download'), places_path(format: :csv) %>
+</p>
+
+<p>
+  <%= form_tag import_places_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag t('views.link_to.csv_upload') %>
+  <% end %>
+</p>

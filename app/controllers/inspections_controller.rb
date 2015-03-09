@@ -71,6 +71,28 @@ class InspectionsController < ApplicationController
     end
   end
 
+def createInspections
+  worker_id = params[:data][:worker]
+  when_year  = params[:when][:year]
+  when_month = params[:when][:month]
+
+  params[:check].each do |key, val|
+    if(val=="1" and Worker.exists?(id: worker_id))
+      newinspection =  Inspection.new
+      newinspection.targetyearmonth = when_year+when_month
+      newinspection.equipment_id = key
+      newinspection.status_id = 1
+      newinspection.worker_id = worker_id
+      newinspection.result_id = 4
+      newinspection.processingdate =  Date.new(when_year.to_i, when_month.to_i, 1)
+      newinspection.save
+    end
+  end
+
+  redirect_to noinspection_list_url
+end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_inspection

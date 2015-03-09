@@ -23,15 +23,27 @@ Rails.application.routes.draw do
 
   resources :statuses
 
-  resources :equipment
+  resources :equipment do
+    collection { post :import }  # for CSV Upload 
+  end
 
-  resources :places
+  resources :places do
+    collection { post :import }  # for CSV Upload 
+  end
 
   resources :types
 
-  resources :workers
+  resources :workers do
+    collection { post :import }  # for CSV Upload 
+  end
 
   resources :divisions
+
+# 設備の点検予定を作成する
+  get 'noinspection_list' => 'equipment#noInspectionList'
+  post 'create_inspections' => 'inspections#createInspections'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
