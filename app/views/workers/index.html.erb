@@ -26,3 +26,7 @@
 <br>
 
 <%= link_to 'New Worker', new_worker_path %>
+
+<br><hr><br>
+
+<%= link_to t('views.link_to.csv_download'), workers_path(format: :csv) %>

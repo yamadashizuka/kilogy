@@ -11,6 +11,8 @@ ja:
       edit: 更新
       show: 詳細
       destroy: 削除
+      csv_download: CSVダウンロード
+      csv_upload: CSVアップロード
     inspection:
       index: 点検一覧
       new: 点検の登録
