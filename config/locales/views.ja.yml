@@ -24,6 +24,7 @@ ja:
       new: 設備の登録
       edit: 設備の更新
       show: 設備の確認
+      no_inspection_index: 点検予定未作成の設備一覧
     place:
       index: 場所の一覧
       new: 場所の登録

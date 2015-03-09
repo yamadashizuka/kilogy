@@ -3,6 +3,7 @@ class Equipment < ActiveRecord::Base
   belongs_to :place
   belongs_to :division
 
+  has_many :inspection
 
   # CSV Upload
   require 'csv'

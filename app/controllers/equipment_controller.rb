@@ -74,6 +74,10 @@ class EquipmentController < ApplicationController
     redirect_to equipment_index_url, notice: "Equipment imported."
   end
 
+  def noInspectionList
+    @equipment = Equipment.includes(:inspection).where(:inspections => { :equipment_id => nil})
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipment

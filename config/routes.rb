@@ -39,6 +39,12 @@ Rails.application.routes.draw do
 
   resources :divisions
 
+# 設備の点検予定を作成する
+  get 'noinspection_list' => 'equipment#noInspectionList'
+  post 'create_inspections' => 'inspections#createInspections'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

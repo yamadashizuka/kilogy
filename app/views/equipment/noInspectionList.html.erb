@@ -1,0 +1,48 @@
+<h1><%= t('views.equipment.no_inspection_index') %></h1>
+
+<%= form_tag action='create_inspections' do %>
+
+  <table>
+    <tr>
+      <td>作業者</td>
+      <td><%= collection_select(:data, :worker, Worker.all, :id, :name)  %></td>
+    </tr><tr>
+      <td>点検年</td>
+      <td><%= select :when, :year, { "2015年" => "2015", "2016年" => "2016",
+                                   "2017年" => "2017", "2018年" => "2018",
+                                   "2019年" => "2019", "2020年" => "2020"}, :selected => "2015" %></td>
+    </tr><tr>
+      <td>点検月</td>
+      <td><%= select :when, :month,
+                { "1月" =>  "01",  "2月" =>  "02",  "3月" =>  "03",
+                  "4月" =>  "04",  "5月" =>  "05",  "6月" =>  "06",
+                  "7月" =>  "07",  "8月" =>  "08",  "9月" =>  "09",
+                 "10月" => "10", "11月" => "11", "12月" => "12"} , :selected => "04"%></td>
+    </tr>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t('activerecord.attributes.equipment.name') %></th>
+        <th><%= t('activerecord.attributes.equipment.type_id') %></th>
+        <th><%= t('activerecord.attributes.equipment.place_id') %></th>
+        <th><%= t('activerecord.attributes.equipment.division_id') %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @equipment.each do |equipment| %>
+        <tr>
+          <td><%= check_box 'check', equipment.id, :id => "equipment_#{equipment.id}" %></td>
+          <td><%= equipment.name %></td>
+          <td><%= equipment.type.name %></td>
+          <td><%= equipment.place.name %></td>
+          <td><%= equipment.division.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= submit_tag('予定の登録') %>
+<% end %>
