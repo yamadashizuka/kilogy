@@ -4,7 +4,6 @@ class WorkersController < ApplicationController
   # GET /workers
   # GET /workers.json
   def index
-
     respond_to do |format|
       format.html do
         @workers = Worker.all
@@ -14,7 +13,6 @@ class WorkersController < ApplicationController
         send_data render_to_string, type: 'text/csv; charset=shift_jis'
       end
     end
-
   end
 
   # GET /workers/1
@@ -71,13 +69,10 @@ class WorkersController < ApplicationController
     end
   end
 
-
-
   def import
     Worker.import(params[:file])
     redirect_to workers_url, notice: "Workers imported."
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

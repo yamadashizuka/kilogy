@@ -4,7 +4,15 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all
+    respond_to do |format|
+      format.html do
+        @equipment = Equipment.all
+      end
+      format.csv do
+        @equipment = Equipment.all
+        send_data render_to_string, type: 'text/csv; charset=shift_jis'
+      end
+    end
   end
 
   # GET /equipment/1
@@ -59,6 +67,11 @@ class EquipmentController < ApplicationController
       format.html { redirect_to equipment_index_url, notice: 'Equipment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Equipment.import(params[:file])
+    redirect_to equipment_index_url, notice: "Equipment imported."
   end
 
   private

@@ -34,8 +34,8 @@ end
 
 # Place(場所)テーブルに初期値を投入(全件削除して再投入)
 Place.delete_all
-Place.create(id: 1, name: '大阪ビル', address: '大阪市なんとか区どこそこ町１−２−３')
-Place.create(id: 2, name: '名古屋タワー', address: '名古屋市なんとか区どこそこ町７−５−８')
+Place.create(id: 1, name: '大阪ビル', address: '大阪市なんとか区どこそこ町１２３')
+Place.create(id: 2, name: '名古屋タワー', address: '名古屋市なんとか区どこそこ町４５６')
 Place.create(id: 3, name: '東京港ショッピングモール', address: '東京都なんとか区ベイサイドエリア１０９')
 if Rails.env.development?
   Place.connection.execute("update sqlite_sequence set seq=3 where name='places'")
