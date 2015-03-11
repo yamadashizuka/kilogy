@@ -4,7 +4,15 @@ class WorkersController < ApplicationController
   # GET /workers
   # GET /workers.json
   def index
-    @workers = Worker.all
+    respond_to do |format|
+      format.html do
+        @workers = Worker.all
+      end
+      format.csv do
+        @workers = Worker.all
+        send_data render_to_string, type: 'text/csv; charset=shift_jis'
+      end
+    end
   end
 
   # GET /workers/1
@@ -59,6 +67,11 @@ class WorkersController < ApplicationController
       format.html { redirect_to workers_url, notice: 'Worker was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Worker.import(params[:file])
+    redirect_to workers_url, notice: "Workers imported."
   end
 
   private

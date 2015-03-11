@@ -4,7 +4,15 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    respond_to do |format|
+      format.html do
+        @places = Place.all
+      end
+      format.csv do
+        @places = Place.all
+        send_data render_to_string, type: 'text/csv; charset=shift_jis'
+      end
+    end
   end
 
   # GET /places/1
@@ -59,6 +67,11 @@ class PlacesController < ApplicationController
       format.html { redirect_to places_url, notice: 'Place was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Place.import(params[:file])
+    redirect_to places_url, notice: "Places imported."
   end
 
   private
