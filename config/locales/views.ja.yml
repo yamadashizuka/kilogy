@@ -37,10 +37,13 @@ ja:
       edit: 記録の更新
       show: 記録の確認
     check:
+      check: チェック結果
       show: チェック結果の確認
     measurement:
+      measurement: 計測結果
       show: 計測結果の確認
     note:
+      note: その他記録
       show: その他記録の確認
     division:
       index: 部署の一覧
