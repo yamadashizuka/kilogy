@@ -4,6 +4,7 @@ ja:
       show:
         title: メニュー
         daily_work: 日常業務
+        management_work: 管理業務
         maintanance_master: マスター登録
         maintanance_sys: システム管理者用
     link_to:
@@ -24,7 +25,7 @@ ja:
       new: 設備の登録
       edit: 設備の更新
       show: 設備の確認
-      no_inspection_index: 点検予定未作成の設備一覧
+      no_inspection_index: 設備一覧(点検予定なし)
     place:
       index: 場所の一覧
       new: 場所の登録
