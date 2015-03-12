@@ -1,8 +1,6 @@
 <% breadcrumb :inspection_do_inspection %>
 <h1><%= t('views.inspection.do_inspecrion') %></h1>
 
-<%= render 'show', inspection: @inspection %>
-
 <%= form_for(@kiroku) do |f| %>
   <% if @kiroku.errors.any? %>
     <div id="error_explanation">
@@ -16,7 +14,13 @@
     </div>
   <% end %>
 
-  <%= render 'kirokus/form_do_inspection', f: f %>
+<div class="row">
+  <div class="col-md-3 col-sm-3 col-xs-4">
+    <%= render 'show', inspection: @inspection %>
+  </div>
+
+    <%= render 'kirokus/form_do_inspection', f: f %>
+
 
   <div class="actions">
     <%= f.submit "点検記録登録" %>
