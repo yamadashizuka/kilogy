@@ -75,7 +75,6 @@ class EquipmentController < ApplicationController
   end
 
   def noInspectionList
-#    @equipment = Equipment.includes(:inspection).where(:inspections => { :equipment_id => nil})
     @equipment = Equipment.no_inspection_list
 
   end
