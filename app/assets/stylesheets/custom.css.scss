@@ -82,3 +82,9 @@ table{
   @include callout-default(#5bc0de);
 }
 
+
+p{
+  .small {
+      font-size: 95%;
+  }
+}
