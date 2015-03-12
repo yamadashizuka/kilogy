@@ -17,3 +17,8 @@ crumb :equipment_show do
   link t('views.equipment.show'), nil
   parent :maint
 end
+
+crumb :equipment_no_inspection_index do
+  link t('views.equipment.no_inspection_index'), nil
+  parent :maint
+end
