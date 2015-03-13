@@ -55,3 +55,9 @@ ja:
       new: 作業者の登録
       edit: 作業者の更新
       show: 作業者の確認
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前"
+      next: "次"
+      truncate: "..."
