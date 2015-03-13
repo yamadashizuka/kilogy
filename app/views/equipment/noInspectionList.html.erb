@@ -4,25 +4,6 @@
 <%= form_tag action='create_inspections' do %>
 
   <table>
-    <tr>
-      <td>作業者</td>
-      <td><%= collection_select(:data, :worker, Worker.all, :id, :name)  %></td>
-    </tr><tr>
-      <td>点検年</td>
-      <td><%= select :when, :year, { "2015年" => "2015", "2016年" => "2016",
-                                   "2017年" => "2017", "2018年" => "2018",
-                                   "2019年" => "2019", "2020年" => "2020"}, :selected => "2015" %></td>
-    </tr><tr>
-      <td>点検月</td>
-      <td><%= select :when, :month,
-                { "1月" =>  "01",  "2月" =>  "02",  "3月" =>  "03",
-                  "4月" =>  "04",  "5月" =>  "05",  "6月" =>  "06",
-                  "7月" =>  "07",  "8月" =>  "08",  "9月" =>  "09",
-                 "10月" => "10", "11月" => "11", "12月" => "12"} , :selected => "04"%></td>
-    </tr>
-  </table>
-
-  <table>
     <thead>
       <tr>
         <th>#</th>
@@ -45,5 +26,36 @@
       <% end %>
     </tbody>
   </table>
-<%= submit_tag('予定の登録') %>
+
+<% unless @equipment.empty? %>
+  <div class="well col-md-4 col-sm-4 col-xs-4">
+    <h4>点検予定の登録</h4>
+      <p class="small">
+      上記一覧から選択した設備の点検予定を登録します。
+      </p>
+    <div>
+      作業者
+      <%= collection_select(:data, :worker, Worker.all, :id, :name)  %>
+    </div>
+    <div>
+      点検年
+      <%= select :when, :year, { "2015年" => "2015", "2016年" => "2016",
+                                       "2017年" => "2017", "2018年" => "2018",
+                                       "2019年" => "2019", "2020年" => "2020"}, :selected => "2015" %>
+    </div>
+    <div>
+          点検月
+          <%= select :when, :month,
+                    { "1月" =>  "01",  "2月" =>  "02",  "3月" =>  "03",
+                      "4月" =>  "04",  "5月" =>  "05",  "6月" =>  "06",
+                      "7月" =>  "07",  "8月" =>  "08",  "9月" =>  "09",
+                     "10月" => "10", "11月" => "11", "12月" => "12"} , :selected => "04"%>
+    </div>
+
+    <div>
+    <%= submit_tag('予定の登録') %>
+    </div>
+  </div>
+<% end %> 
+
 <% end %>
