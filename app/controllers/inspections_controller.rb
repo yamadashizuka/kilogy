@@ -6,7 +6,7 @@ class InspectionsController < ApplicationController
   def index
     #@inspections = Inspection.all
     @search = Inspection.search(params[:q])
-    @inspections = @search.result.order(:targetyearmonth)
+    @inspections = @search.result.order(:targetyearmonth).page(params[:page])
 
   end
 
