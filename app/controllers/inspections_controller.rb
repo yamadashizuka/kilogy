@@ -4,7 +4,10 @@ class InspectionsController < ApplicationController
   # GET /inspections
   # GET /inspections.json
   def index
-    @inspections = Inspection.all
+    #@inspections = Inspection.all
+    @search = Inspection.search(params[:q])
+    @inspections = @search.result.order(:targetyearmonth)
+
   end
 
   # GET /inspections/1
