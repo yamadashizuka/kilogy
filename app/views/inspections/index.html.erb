@@ -1,6 +1,22 @@
 <% breadcrumb :inspection_index %>
 <h1><%= t('views.inspection.index') %></h1>
 
+<div class="well col-md-4 col-sm-4 col-xs-4">
+  
+  <%= search_form_for @search do |f| %>
+    <div>
+    <p>
+    <%= t('activerecord.attributes.inspection.worker_id') %>
+    <%= f.collection_select(:worker_id_eq, Worker.all, :id, :name, :include_blank => true ) %>
+    </div>
+    </p>
+    <div>
+      <%= f.submit t('helpers.submit.search') %>
+    </div>
+  <% end %>
+
+</div>
+
 <table>
   <thead>
     <tr>
