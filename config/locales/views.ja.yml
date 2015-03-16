@@ -10,6 +10,7 @@ ja:
       infomsg: おしらせ
       infomsg_more: 詳細を読む
       infomsg_index: おしらせ一覧
+      topics: お問い合わせ
     link_to:
       new: 新規登録
       edit: 更新
@@ -63,6 +64,15 @@ ja:
       new: おしらせの登録
       edit: おしらせの更新
       show: おしらせの確認
+    topic:
+      index: 問合せの一覧
+      new: 問合せの登録
+      edit: 問合せの更新
+      show: 問合せの確認
+    comment:
+      index: コメントの一覧
+      new: コメントの登録
+      edit: コメントの更新
     pagination:
       first: "最初"
       last: "最後"

@@ -40,3 +40,16 @@ ja:
         effective_date: 発効日
         title: タイトル
         description: 内容
+      topic:
+        title: タイトル
+        name: 投稿者
+        description: 詳細
+        flag_id: Open/Close
+        created_at: 登録日
+        updated_at: 最終更新日
+      comment:
+        name: 投稿者
+        description: 詳細    
+        topic_id: トピック
+        created_at: 登録日
+        updated_at: 最終更新日
