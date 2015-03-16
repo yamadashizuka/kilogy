@@ -1,7 +1,18 @@
 <% breadcrumb :root %>
 
-<h2><%= t('views.menu.show.title') %></h2>
+<div class="well well-sm">
+  <h3><%= t('views.menu.infomsg') %></h3>
+  <% @infomsgs.each do |infomsg| %>
+    <p>
+      <%= infomsg.effective_date %> :
+      <%= infomsg.title %>
+      (<%= link_to t('views.menu.infomsg_more'), infomsg %>)
+    </p>
+  <% end %>
+  <p><%= link_to t('views.menu.infomsg_index'), infomsgs_path %></p>
+</div>
 
+<h2><%= t('views.menu.show.title') %></h2>
 
 <div class="bs-callout bs-callout-danger">
     <h4><%= t('views.menu.show.daily_work') %></h4>

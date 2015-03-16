@@ -7,6 +7,9 @@ ja:
         management_work: 管理業務
         maintanance_master: マスター登録
         maintanance_sys: システム管理者用
+      infomsg: おしらせ
+      infomsg_more: 詳細を読む
+      infomsg_index: おしらせ一覧
     link_to:
       new: 新規登録
       edit: 更新
@@ -55,6 +58,11 @@ ja:
       new: 作業者の登録
       edit: 作業者の更新
       show: 作業者の確認
+    infomsg:
+      index: おしらせの一覧
+      new: おしらせの登録
+      edit: おしらせの更新
+      show: おしらせの確認
     pagination:
       first: "最初"
       last: "最後"

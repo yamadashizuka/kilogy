@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304010517) do
+ActiveRecord::Schema.define(version: 20150316063919) do
 
   create_table "checkresults", force: true do |t|
     t.string   "name"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20150304010517) do
   add_index "equipment", ["division_id"], name: "index_equipment_on_division_id"
   add_index "equipment", ["place_id"], name: "index_equipment_on_place_id"
   add_index "equipment", ["type_id"], name: "index_equipment_on_type_id"
+
+  create_table "infomsgs", force: true do |t|
+    t.date     "effective_date"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "inspections", force: true do |t|
     t.string   "targetyearmonth"
