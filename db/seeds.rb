@@ -120,6 +120,16 @@ else
   Checkresult.connection.execute("SELECT SETVAL('checkresults_id_seq', 4, TRUE)")
 end
 
+# Flag(フラグ)テーブルに初期値を投入(全件削除して再投入)
+Flag.delete_all
+Flag.create(id: 1, name: 'Open')
+Flag.create(id: 2, name: 'Close')
+if Rails.env.development?
+  Weather.connection.execute("update sqlite_sequence set seq=2 where name='flasg'")
+else
+  Weather.connection.execute("SELECT SETVAL('flags_id_seq', 2, TRUE)")
+end
+
 ##########################
 ### テスト用にデータを入れる（超暫定)
 ##########################

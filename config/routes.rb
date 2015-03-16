@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
+  resources :topics
+
+  resources :flags
+
+  resources :infomsgs
+
   get 'menu/show'
 
   root to: 'menu#show'
