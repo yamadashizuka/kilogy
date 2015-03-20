@@ -19,6 +19,7 @@ class InfomsgsController < ApplicationController
 
   # GET /infomsgs/1/edit
   def edit
+    @passwd = Rails.application.secrets.infomsg_admn_pass
   end
 
   # POST /infomsgs
