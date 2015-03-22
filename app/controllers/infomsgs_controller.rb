@@ -25,7 +25,7 @@ class InfomsgsController < ApplicationController
   # POST /infomsgs.json
   def create
     @infomsg = Infomsg.new(infomsg_params)
- 
+
     respond_to do |format|
       if isAdmin(params[:check][:adminpass]) && @infomsg.save
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully created.' }
@@ -62,6 +62,20 @@ class InfomsgsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def deleteByAdmin
+    infomsg = Infomsg.find(params[:id][:trg])
+    respond_to do |format|
+      if isAdmin(params[:check][:adminpass]) && infomsg.destroy
+        format.html { redirect_to infomsgs_url, notice: 'Infomsg was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @infomsg.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   private
   

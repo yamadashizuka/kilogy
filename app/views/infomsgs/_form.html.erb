@@ -24,10 +24,7 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    PassWord:<br>
-    <%= text_field :check, :adminpass %>
-  </div>
+  <%= render 'passwdfld' %>
 
   <div class="actions">
     <%= f.submit %>

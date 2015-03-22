@@ -18,3 +18,16 @@
 </p>
 
 <%= link_to 'Back', infomsgs_path %>
+
+<hr>
+
+
+<%= form_tag action='delete_by_admin' do %>
+  <%= hidden_field :id, :trg, :value => @infomsg.id %>
+
+  <%= render 'passwdfld' %>
+  <div>
+    <%= submit_tag('削除') %>
+  </div>
+
+<% end %>
