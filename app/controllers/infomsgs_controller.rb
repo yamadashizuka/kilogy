@@ -27,7 +27,7 @@ class InfomsgsController < ApplicationController
     @infomsg = Infomsg.new(infomsg_params)
 
     respond_to do |format|
-      if @infomsg.save
+      if isAdmin(params[:check][:adminpass]) && @infomsg.save
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully created.' }
         format.json { render :show, status: :created, location: @infomsg }
       else
@@ -40,8 +40,10 @@ class InfomsgsController < ApplicationController
   # PATCH/PUT /infomsgs/1
   # PATCH/PUT /infomsgs/1.json
   def update
+    @infomsg.assign_attributes(infomsg_params)  # password error で入力値がクリアされないよう先にセットしておく
+
     respond_to do |format|
-      if @infomsg.update(infomsg_params)
+      if isAdmin(params[:check][:adminpass]) && @infomsg.update(infomsg_params)
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully updated.' }
         format.json { render :show, status: :ok, location: @infomsg }
       else
@@ -61,7 +63,31 @@ class InfomsgsController < ApplicationController
     end
   end
 
+  def deleteByAdmin
+    @infomsg = Infomsg.find(params[:id][:trg])
+    respond_to do |format|
+      if isAdmin(params[:check][:adminpass]) && @infomsg.destroy
+        format.html { redirect_to infomsgs_url, notice: 'Infomsg was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :show }
+        format.json { render json: @infomsg.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   private
+  
+    def isAdmin(pass)
+      if pass == Rails.application.secrets.infomsg_admn_pass
+        admin = true
+      else
+        @infomsg.errors[:base] << 'パスワードが違います。'
+        admin = false
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_infomsg
       @infomsg = Infomsg.find(params[:id])

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :flags
 
   resources :infomsgs
+  post 'infomsgs/delete_by_admin' => 'infomsgs#deleteByAdmin'
 
   get 'menu/show'
 
