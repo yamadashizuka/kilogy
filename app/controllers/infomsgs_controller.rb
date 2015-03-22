@@ -64,9 +64,9 @@ class InfomsgsController < ApplicationController
   end
 
   def deleteByAdmin
-    infomsg = Infomsg.find(params[:id][:trg])
+    @infomsg = Infomsg.find(params[:id][:trg])
     respond_to do |format|
-      if isAdmin(params[:check][:adminpass]) && infomsg.destroy
+      if isAdmin(params[:check][:adminpass]) && @infomsg.destroy
         format.html { redirect_to infomsgs_url, notice: 'Infomsg was successfully destroyed.' }
         format.json { head :no_content }
       else
