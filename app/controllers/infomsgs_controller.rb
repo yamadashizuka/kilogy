@@ -19,16 +19,15 @@ class InfomsgsController < ApplicationController
 
   # GET /infomsgs/1/edit
   def edit
-    @passwd = Rails.application.secrets.infomsg_admn_pass
   end
 
   # POST /infomsgs
   # POST /infomsgs.json
   def create
     @infomsg = Infomsg.new(infomsg_params)
-
+ 
     respond_to do |format|
-      if @infomsg.save
+      if isAdmin(params[:check][:adminpass]) && @infomsg.save
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully created.' }
         format.json { render :show, status: :created, location: @infomsg }
       else
@@ -41,8 +40,10 @@ class InfomsgsController < ApplicationController
   # PATCH/PUT /infomsgs/1
   # PATCH/PUT /infomsgs/1.json
   def update
+    @infomsg.assign_attributes(infomsg_params)  # password error で入力値がクリアされないよう先にセットしておく
+
     respond_to do |format|
-      if @infomsg.update(infomsg_params)
+      if isAdmin(params[:check][:adminpass]) && @infomsg.update(infomsg_params)
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully updated.' }
         format.json { render :show, status: :ok, location: @infomsg }
       else
@@ -63,6 +64,16 @@ class InfomsgsController < ApplicationController
   end
 
   private
+  
+    def isAdmin(pass)
+      if pass == Rails.application.secrets.infomsg_admn_pass
+        admin = true
+      else
+        @infomsg.errors[:base] << 'パスワードが違います。'
+        admin = false
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_infomsg
       @infomsg = Infomsg.find(params[:id])
