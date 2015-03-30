@@ -4,7 +4,7 @@ class InfomsgsController < ApplicationController
   # GET /infomsgs
   # GET /infomsgs.json
   def index
-    @infomsgs = Infomsg.all
+    @infomsgs = Infomsg.all.order('effective_date DESC')
   end
 
   # GET /infomsgs/1
@@ -27,7 +27,7 @@ class InfomsgsController < ApplicationController
     @infomsg = Infomsg.new(infomsg_params)
 
     respond_to do |format|
-      if isAdmin(params[:check][:adminpass]) && @infomsg.save
+      if admin?(params[:check][:adminpass]) && @infomsg.save
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully created.' }
         format.json { render :show, status: :created, location: @infomsg }
       else
@@ -43,7 +43,7 @@ class InfomsgsController < ApplicationController
     @infomsg.assign_attributes(infomsg_params)  # password error で入力値がクリアされないよう先にセットしておく
 
     respond_to do |format|
-      if isAdmin(params[:check][:adminpass]) && @infomsg.update(infomsg_params)
+      if admin?(params[:check][:adminpass]) && @infomsg.update(infomsg_params)
         format.html { redirect_to @infomsg, notice: 'Infomsg was successfully updated.' }
         format.json { render :show, status: :ok, location: @infomsg }
       else
@@ -66,7 +66,7 @@ class InfomsgsController < ApplicationController
   def deleteByAdmin
     @infomsg = Infomsg.find(params[:id][:trg])
     respond_to do |format|
-      if isAdmin(params[:check][:adminpass]) && @infomsg.destroy
+      if admin?(params[:check][:adminpass]) && @infomsg.destroy
         format.html { redirect_to infomsgs_url, notice: 'Infomsg was successfully destroyed.' }
         format.json { head :no_content }
       else
@@ -79,7 +79,7 @@ class InfomsgsController < ApplicationController
 
   private
   
-    def isAdmin(pass)
+    def admin?(pass)
       if pass == Rails.application.secrets.infomsg_admn_pass
         admin = true
       else
