@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304010517) do
+ActiveRecord::Schema.define(version: 20150316085153) do
 
   create_table "checkresults", force: true do |t|
     t.string   "name"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20150304010517) do
   end
 
   add_index "checks", ["weather_id"], name: "index_checks_on_weather_id"
+
+  create_table "comments", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
 
   create_table "divisions", force: true do |t|
     t.string   "code"
@@ -50,6 +60,20 @@ ActiveRecord::Schema.define(version: 20150304010517) do
   add_index "equipment", ["division_id"], name: "index_equipment_on_division_id"
   add_index "equipment", ["place_id"], name: "index_equipment_on_place_id"
   add_index "equipment", ["type_id"], name: "index_equipment_on_type_id"
+
+  create_table "flags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "infomsgs", force: true do |t|
+    t.date     "effective_date"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "inspections", force: true do |t|
     t.string   "targetyearmonth"
@@ -116,6 +140,17 @@ ActiveRecord::Schema.define(version: 20150304010517) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "topics", force: true do |t|
+    t.string   "title"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "flag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["flag_id"], name: "index_topics_on_flag_id"
 
   create_table "types", force: true do |t|
     t.string   "name"

@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
+  resources :topics
+
+  resources :flags
+
+  resources :infomsgs
+  post 'infomsgs/delete_by_admin' => 'infomsgs#deleteByAdmin'
+
   get 'menu/show'
 
   root to: 'menu#show'
