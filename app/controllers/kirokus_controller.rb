@@ -31,9 +31,12 @@ class KirokusController < ApplicationController
   # POST /kirokus.json
   def create
     @kiroku = Kiroku.new(kiroku_params)
+    inspection = Inspection.find(params[:kiroku][:inspection_id])
+    inspection.start_inspection  # 点検開始
+    inspection.judging(@kiroku)  # 点検結果を判断
 
     respond_to do |format|
-      if @kiroku.save
+      if @kiroku.save && inspection.save
         format.html { redirect_to @kiroku, notice: 'Kiroku was successfully created.' }
         format.json { render :show, status: :created, location: @kiroku }
       else
