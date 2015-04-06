@@ -17,4 +17,19 @@ class Inspection < ActiveRecord::Base
               .having("max(targetyearmonth) < '#{limit_date.strftime('%Y%m')}'")
               .pluck(:equipment_id)
   end
+
+  # Inspection のステータス変更
+  def start_inspection
+    self.status_id = Status.of_doing;
+  end
+
+  # Inspection の結果変更
+  def judging(kiroku)
+    if(kiroku.check.tone_id!=4)
+      self.result_id = Result.of_ok;
+    else
+      self.result_id = Result.of_ng;
+    end
+  end
+
 end
