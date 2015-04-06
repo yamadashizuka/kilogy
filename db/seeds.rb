@@ -8,6 +8,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 # Division(部署)テーブルに初期値を投入(全件削除して再投入)
 Division.delete_all
 Division.create(id: 1, code: 'HdO-01', name: '本社')
@@ -74,10 +75,10 @@ end
 
 # Status(状況)テーブルに初期値を投入(全件削除して再投入)
 Status.delete_all
-Status.create(id: 1, name: '担当未割当')
-Status.create(id: 2, name: '実施待ち')
-Status.create(id: 3, name: '実施中')
-Status.create(id: 4, name: '完了')
+Status.create(id: Constants::Status::ID_UNALLOCATED, name: '担当未割当')
+Status.create(id: Constants::Status::ID_READY, name: '実施待ち')
+Status.create(id: Constants::Status::ID_DOING, name: '実施中')
+Status.create(id: Constants::Status::ID_DONE, name: '完了')
 if Rails.env.development?
   Status.connection.execute("update sqlite_sequence set seq=4 where name='statuses'")
 else
@@ -86,10 +87,10 @@ end
 
 # Result(結果)テーブルに初期値を投入(全件削除して再投入)
 Result.delete_all
-Result.create(id: 1, name: '合格')
-Result.create(id: 2, name: '不合格')
-Result.create(id: 3, name: '状態不明')
-Result.create(id: 4, name: '検査前')
+Result.create(id: Constants::Result::ID_OK, name: '合格')
+Result.create(id: Constants::Result::ID_NG, name: '不合格')
+Result.create(id: Constants::Result::ID_UNKNOWN, name: '状態不明')
+Result.create(id: Constants::Result::ID_PREINITIATION, name: '検査前')
 if Rails.env.development?
   Result.connection.execute("update sqlite_sequence set seq=4 where name='results'")
 else
