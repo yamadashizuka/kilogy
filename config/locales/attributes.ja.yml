@@ -12,6 +12,7 @@ ja:
         worker_id: 記録者
         latitude: 緯度
         longitude: 経度
+        updated_at: 最終更新日
       check:
         kiroku_id: 記録番号
         weather_id: 天候

@@ -24,6 +24,8 @@ ja:
       edit: 点検の更新
       show: 点検の確認
       do_inspecrion: 点検開始
+      done_inspection: 点検の完了
+      close_inspecrion: 点検完了(承認)
     equipment:
       index: 設備一覧
       new: 設備の登録

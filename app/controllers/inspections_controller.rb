@@ -1,5 +1,5 @@
 class InspectionsController < ApplicationController
-  before_action :set_inspection, only: [:show, :edit, :update, :destroy, :do_inspection]
+  before_action :set_inspection, only: [:show, :edit, :update, :destroy, :do_inspection, :done_inspection, :closeInspection]
 
   # GET /inspections
   # GET /inspections.json
@@ -23,6 +23,11 @@ class InspectionsController < ApplicationController
     @check =  @kiroku.build_check
     @measurement = @kiroku.build_measurement
     @note = @kiroku.build_note
+  end
+
+  # GET /inspections/1/done_inspection
+  def done_inspection
+    @kirokus = @inspection.kiroku.all
   end
 
   # GET /inspections/new
@@ -74,27 +79,40 @@ class InspectionsController < ApplicationController
     end
   end
 
-def createInspections
-  worker_id = params[:data][:worker]
-  when_year  = params[:when][:year]
-  when_month = params[:when][:month]
+  def createInspections
+    worker_id = params[:data][:worker]
+    when_year  = params[:when][:year]
+    when_month = params[:when][:month]
 
-  params[:check].each do |key, val|
-    if(val=="1" and Worker.exists?(id: worker_id))
-      newinspection =  Inspection.new
-      newinspection.targetyearmonth = when_year+when_month
-      newinspection.equipment_id = key
-      newinspection.status_id = 1
-      newinspection.worker_id = worker_id
-      newinspection.result_id = 4
-      newinspection.processingdate =  Date.new(when_year.to_i, when_month.to_i, 1)
-      newinspection.save
+    params[:check].each do |key, val|
+      if(val=="1" and Worker.exists?(id: worker_id))
+        newinspection =  Inspection.new
+        newinspection.targetyearmonth = when_year+when_month
+        newinspection.equipment_id = key
+        newinspection.status_id = 1
+        newinspection.worker_id = worker_id
+        newinspection.result_id = 4
+        newinspection.processingdate =  Date.new(when_year.to_i, when_month.to_i, 1)
+        newinspection.save
+      end
     end
+    redirect_to noinspection_list_url
   end
 
-  redirect_to noinspection_list_url
-end
-
+  # 点検完了の登録
+  def  closeInspection
+    puts @inspection
+    @inspection.close_inspection
+    respond_to do |format|
+      if @inspection.save
+        format.html { redirect_to inspection_url, notice: 'Inspection was successfully closed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :done_inspection }
+        format.json { render json: @inspection.errors, status: :unprocessable_close }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

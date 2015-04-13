@@ -40,9 +40,11 @@
         <td><%= inspection.result.name %></td>
         <td><%= inspection.processingdate %></td>
         <td>
-          <%= link_to  do_inspection_path(inspection) do %>
-            <i class="fa fa-pencil fa-fw"></i> 
-            <%= t('views.inspection.do_inspecrion') %>
+          <% if inspection.can_inspection? %>
+            <%= link_to  do_inspection_path(inspection) do %>
+              <i class="fa fa-pencil fa-fw"></i> 
+              <%= t('views.inspection.do_inspecrion') %>
+            <% end %>
           <% end %>
         </td>
         <td>
@@ -50,6 +52,9 @@
             <i class="fa fa-newspaper-o fa-fw"></i> 
             <%= t('views.link_to.show') %>
           <% end %>
+        </td>
+        <td>
+          <%= link_to_if(inspection.doing?, t('views.inspection.done_inspection'), done_inspection_path(inspection) ){} %>
         </td>
         <td>
           <%= link_to edit_inspection_path(inspection) do %>
