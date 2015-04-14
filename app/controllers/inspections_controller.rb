@@ -102,7 +102,8 @@ class InspectionsController < ApplicationController
   # 点検完了の登録
   def  closeInspection
     @approval = @inspection.build_approval
-    @approval.signature = Base64.decode64(params[:sign].sub('data:image/png;base64,', ''))
+    p=params[:sign].sub('data:image/png;base64,', '')
+    @approval.signature = Base64.decode64(p)
     @inspection.close_inspection
 
     respond_to do |format|
