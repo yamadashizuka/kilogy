@@ -49,8 +49,9 @@
 <hr>
 
 <%= form_tag action='close_inspection' do %>
+  <%= render 'canvas' %>
+  <hr>
   <div class="actions">
     <%= submit_tag(t('views.inspection.close_inspecrion')) %>
   </div>
-
 <% end %>

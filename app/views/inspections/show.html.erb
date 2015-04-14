@@ -6,6 +6,8 @@
 
 <%= render 'kirokus/index', kirokus: @kirokus %>
 
+<%= image_tag signature_approval_path(@inspection.approval) if @inspection.approval.present? %>
+  
 <hr>
 <%= link_to 'Edit', edit_inspection_path(@inspection) %> |
 <%= link_to 'Back', inspections_path %>
