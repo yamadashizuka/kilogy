@@ -103,9 +103,7 @@ class InspectionsController < ApplicationController
   def  closeInspection
     @approval = @inspection.build_approval
     p=params[:sign].sub('data:image/png;base64,', '')
-    puts "##############################"
-    puts p
-    puts "##############################"
+    p=p.delete("\n\r")
     @approval.signature = Base64.decode64(p)
     @inspection.close_inspection
 
