@@ -48,10 +48,22 @@
 <% end %>
 <hr>
 
+<%= t('activerecord.attributes.approval.signature') %><br />
 <%= form_tag action='close_inspection' do %>
-  <%= render 'canvas' %>
+  <div>
+    <script type="text/javascript" src="./libs/fabric.js"></script>
+    <canvas id="canvas" width="300" height="300" style="border:1px solid;">ご利用のブラウザでは署名欄は表示できません。</canvas>
+  　<script type="text/javascript">
+　    <!--　 Canvasオブジェクトを作成　-->
+　      var canvas = new fabric.Canvas('canvas');
+      <!--　ここにコードを書いていきます。　-->
+        canvas.isDrawingMode = true;
+    </script>
+    <button type="button" onclick="canvas.clear().renderAll()">クリア</button>    
+    <input type="hidden" id="sign" name="sign" value="" />
+  </div>
   <hr>
   <div class="actions">
-    <%= submit_tag(t('views.inspection.close_inspecrion')) %>
+    <%= submit_tag(t('views.inspection.close_inspecrion'), :onclick =>"document.getElementById('sign').value = canvas.toSVG()") %>
   </div>
 <% end %>

@@ -33,10 +33,7 @@ Rails.application.routes.draw do
 
   # 点検を完了(StatusをDoneに）する
   post 'inspections/:id/close_inspection' => 'inspections#closeInspection'
-  # 点検完了時のサイン
-  resources :approvals do
-    member { get :signature }
-  end
+
   resources :results
 
   resources :statuses
