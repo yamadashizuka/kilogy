@@ -6,6 +6,7 @@
 
 <%= render 'kirokus/index', kirokus: @kirokus %>
 
+<%= t('activerecord.attributes.approval.signature') %><br />
 <%= raw @inspection.approval.signature if @inspection.approval.present? %>
 
 <hr>
