@@ -101,10 +101,13 @@ class InspectionsController < ApplicationController
 
   # 点検完了の登録
   def  closeInspection
-    puts @inspection
+    @approval = @inspection.build_approval
+    @approval.signature = params[:sign]
+
     @inspection.close_inspection
+
     respond_to do |format|
-      if @inspection.save
+      if @inspection.save && @approval.save
         format.html { redirect_to inspection_url, notice: 'Inspection was successfully closed.' }
         format.json { head :no_content }
       else

@@ -26,9 +26,12 @@ Rails.application.routes.draw do
   resources :checkresults
 
   resources :inspections
+
+  # 点検を実施する
   get 'inspections/:id/do_inspection' => 'inspections#do_inspection' , as: 'do_inspection'
   get 'inspections/:id/done_inspection' => 'inspections#done_inspection' , as: 'done_inspection'
-# 点検を完了(StatusをDoneに）する
+
+  # 点検を完了(StatusをDoneに）する
   post 'inspections/:id/close_inspection' => 'inspections#closeInspection'
 
   resources :results

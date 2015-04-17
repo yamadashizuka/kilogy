@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316085153) do
+ActiveRecord::Schema.define(version: 20150414012918) do
+
+  create_table "approvals", force: true do |t|
+    t.integer  "inspection_id"
+    t.binary   "signature"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "approvals", ["inspection_id"], name: "index_approvals_on_inspection_id"
 
   create_table "checkresults", force: true do |t|
     t.string   "name"
