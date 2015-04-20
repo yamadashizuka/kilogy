@@ -20,6 +20,7 @@ class InspectionsController < ApplicationController
   def do_inspection
     @kirokus = @inspection.kiroku.all
     @kiroku = @inspection.kiroku.build
+    @kiroku.worker_id = @inspection.worker_id
     @check =  @kiroku.build_check
     @measurement = @kiroku.build_measurement
     @note = @kiroku.build_note
