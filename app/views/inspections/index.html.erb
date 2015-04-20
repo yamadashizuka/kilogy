@@ -8,6 +8,8 @@
     <p>
     <%= t('activerecord.attributes.inspection.worker_id') %>
     <%= f.collection_select(:worker_id_eq, Worker.all, :id, :name, :include_blank => true ) %>
+    <%= t('activerecord.attributes.inspection.status_id') %>
+    <%= f.collection_select(:status_id_eq, Status.all, :id, :name, :include_blank => true ) %>
     </div>
     </p>
     <div>
