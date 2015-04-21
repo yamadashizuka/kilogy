@@ -93,7 +93,7 @@ class InspectionsController < ApplicationController
         newinspection.status_id = 1
         newinspection.worker_id = worker_id
         newinspection.result_id = 4
-        newinspection.processingdate =  Date.today.in_time_zone
+        newinspection.processingdate =  currentDate
         newinspection.save
       end
     end

@@ -1,5 +1,8 @@
 ja:
   views:
+    navbar:
+      currentDate: 本日
+      currentMonth: 当月
     menu:
       show:
         title: メニュー

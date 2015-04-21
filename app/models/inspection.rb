@@ -25,7 +25,7 @@ class Inspection < ActiveRecord::Base
   end
   def close_inspection
     self.status_id = Status.of_done;
-    self.processingdate = Date.today.in_time_zone.to_s[0..9]
+    self.processingdate = currentDate
   end
 
 # Inspection の結果変更
@@ -35,7 +35,7 @@ class Inspection < ActiveRecord::Base
     else
       self.result_id = Result.of_ng;
     end
-    self.processingdate = Date.today.in_time_zone.to_s[0..9]
+    self.processingdate = currentDate
   end
 
 # 点検中(doing)かどうか
