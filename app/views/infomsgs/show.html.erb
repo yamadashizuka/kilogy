@@ -27,7 +27,7 @@
 
 <p>
   <strong><%= t('activerecord.attributes.infomsg.description') %>:</strong>
-  <%= @infomsg.description %>
+  <%= simple_format(@infomsg.description) %>
 </p>
 
 <%= link_to 'Back', infomsgs_path %>

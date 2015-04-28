@@ -14,7 +14,7 @@
 
 <p>
   <strong><%= t('activerecord.attributes.topic.description') %>:</strong>
-  <%= @topic.description %>
+  <%= simple_format(@topic.description) %>
 </p>
 
 <p>
