@@ -21,11 +21,11 @@ class Inspection < ActiveRecord::Base
 
   # 設備の点検予定をまとめて作成
   def self.bulk_create(params, current_date)
-    params.targets.try(:map) do |id|
+    params.targets.try(:map) do |equipment_id|
       if Worker.exists?(id: params.worker_id)
         new_inspection = new(
           targetyearmonth: params.targetyearmonth,
-          equipment_id: id,
+          equipment_id: equipment_id,
           status_id: 1,
           worker_id: params.worker_id,
           result_id: 4,
