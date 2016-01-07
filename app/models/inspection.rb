@@ -7,7 +7,7 @@ class Inspection < ActiveRecord::Base
   has_one :approval
 
   include Common
-  after_commit :dump 
+  after_commit :dump
 
 
   #Inspection上に、1年前以前の情報しかないequipment_idの一覧を取得。
@@ -18,6 +18,26 @@ class Inspection < ActiveRecord::Base
               .having("max(targetyearmonth) < '#{limit_date.strftime('%Y%m')}'")
               .pluck(:equipment_id)
   end
+
+  # 設備の点検予定をまとめて作成
+  def self.bulk_create(params, current_date)
+    params.targets.try(:map) do |id|
+      if Worker.exists?(id: params.worker_id)
+        new_inspection = new(
+          targetyearmonth: params.targetyearmonth,
+          equipment_id: id,
+          status_id: 1,
+          worker_id: params.worker_id,
+          result_id: 4,
+          processingdate: current_date
+        )
+        new_inspection.save
+      else
+        false
+      end
+    end
+  end
+
 
   # Inspection のステータス変更
   def start_inspection
