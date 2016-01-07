@@ -38,7 +38,6 @@ class Inspection < ActiveRecord::Base
     end
   end
 
-
   # Inspection のステータス変更
   def start_inspection
     self.status_id = Status.of_doing;
