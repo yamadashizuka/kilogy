@@ -24,7 +24,7 @@
 
         document.getElementById("kiroku_latitude").value = lat;
         document.getElementById("kiroku_longitude").value = lng;
-        
+
         },
 
       // （2）位置情報の取得に失敗した場合
@@ -62,11 +62,11 @@
   </div>
   <div class="field">
     <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
+    <%= f.text_field :latitude, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
+    <%= f.text_field :longitude, readonly: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
